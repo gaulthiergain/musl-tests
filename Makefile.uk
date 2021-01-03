@@ -1,0 +1,85 @@
+$(eval $(call addlib,appmusltest))
+
+################################################################################
+# App includes
+################################################################################
+CINCLUDES-y   += -I$(APPMUSLTEST_BASE)/include
+
+#################################################################################
+# Global flags
+#################################################################################
+# Suppress some warnings to make the build process look neater
+SUPPRESS_FLAGS += -Wno-unused-parameter -Wno-unused-variable -Wno-nonnull       \
+-Wno-unused-but-set-variable -Wno-unused-label -Wno-char-subscripts             \
+-Wno-unused-function -Wno-missing-field-initializers -Wno-uninitialized         \
+-Wno-array-bounds -Wno-maybe-uninitialized -Wno-pointer-sign -Wno-unused-value  \
+-Wno-unused-macros -Wno-parentheses -Wno-implicit-function-declaration          \
+-Wno-missing-braces -Wno-endif-labels -Wno-unused-but-set-variable              \
+-fno-math-errno -Wno-implicit-function-declaration -Wno-type-limits -Wno-sign-compare
+
+APPMUSLTEST_CFLAGS-y    +=$(SUPPRESS_FLAGS)
+
+#################################################################################
+# Musl Helpers
+#################################################################################
+FUNCTIONAL = functional
+COMMON = common
+
+#################################################################################
+# Musl Test sources (main)
+#################################################################################
+
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/main.c
+
+#################################################################################
+# Musl Test sources (functional test)
+#################################################################################
+
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/basename.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/crypt.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/dirname.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/env.c
+#APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/fcntl.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/fdopen.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/fnmatch.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/fscanf.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/fwscanf.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/mbc.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/memstream.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/popen.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/pthread.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/qsort.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/random.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/search_hsearch.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/sem.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/setjmp.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/snprintf.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/socket.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/spawn.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/sscanf.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/stat.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/string.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/strtod.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/strtol.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/swprintf.c
+#APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/tgmath.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/time.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/ungetc.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/utime.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/wcstol.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(FUNCTIONAL)/wcsstr.c
+
+
+#################################################################################
+# Musl Test sources (common)
+#################################################################################
+
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/fdfill.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/memfill.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/mtest.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/path.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/print.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/rand.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/setrlim.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/utf8.c
+APPMUSLTEST_SRCS-y += $(APPMUSLTEST_BASE)/$(COMMON)/vmfill.c
