@@ -37,7 +37,7 @@ static const struct {
 	{ L"%.0d", 0, L"" },
 	{ L"%.0o", 0, L"" },
 	{ L"%#.0d", 0, L"" },
-	{ L"%#.0o", 0, L"" },
+	{ L"%#.0o", 0, L"0" },
 	{ L"%#.0x", 0, L"" },
 
 	/* hex: test alt form and case */
